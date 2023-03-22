@@ -38,7 +38,7 @@ const createUser = (req, res, next) => {
     .catch((err) => {
       if (err.code === 11000) {
         return next(new ConflictError('Пользователь с таким email уже зарегистрирован'));
-      } if (err.name === 'ValidationError') {
+      } if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Ошибка валидации'));
       } return next(err);
     });
@@ -60,7 +60,7 @@ const getUser = (req, res, next, id) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof mongoose.Error.CastError) {
         return next(new BadRequestError('Некорректный id пользователя'));
       } return next(err);
     });
@@ -83,10 +83,7 @@ const updateUser = (req, res, data, next) => {
     })
     .then((newUserInfo) => res.send(newUserInfo))
     .catch((err) => {
-      // if (err.message === 'NotFound') {
-      //   next(new NotFoundError('Пользователь не найден'));
-      // }
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Ошибка валидации'));
       } return next(err);
     });
