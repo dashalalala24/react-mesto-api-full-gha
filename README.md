@@ -6,7 +6,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 130.193.48.119
+IP 130.193.48.119
 
 Frontend http://mesto.dashalalala24.nomoredomains.work/
 
