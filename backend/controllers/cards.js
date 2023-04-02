@@ -17,7 +17,7 @@ const getCards = (req, res, next) => {
 
 // POST /cards
 const createCard = (req, res, next) => {
-  const owner = req.user;
+  const owner = req.user._id;
   const { name, link } = req.body;
   Card.create({ name, link, owner })
     .then((card) => res.status(CREATED_CODE).send({ data: card }))
@@ -58,7 +58,7 @@ const handleLike = (req, res, next, option) => {
     req.params.cardId,
     option,
     { new: true },
-  )
+  ).populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
