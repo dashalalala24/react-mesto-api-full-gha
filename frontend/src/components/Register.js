@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import AuthPage from './AuthPage';
 import useFormAndValidation from '../hooks/useFormAndValidation';
 
 function Register({ handleRegister }) {
@@ -38,11 +38,12 @@ function Register({ handleRegister }) {
 
   return (
     <section className='auth'>
-      <h3 className='auth__title'>Регистрация</h3>
-      <form
-        className='auth__form'
-        name='auth'
-        onSubmit={handleSubmit}>
+      <AuthPage
+        formName='register'
+        onSubmit={handleSubmit}
+        title='Регистрация'
+        buttonText='Зарегистрироваться'
+        isValid={isValid}>
         <div className='auth__inputs'>
           <input
             className='auth__input auth__input_type_email'
@@ -77,18 +78,7 @@ function Register({ handleRegister }) {
             {errors.password}
           </span>
         </div>
-        <button
-          className={`auth__button ${!isValid ? 'auth__button_disabled' : ''}`}
-          type='submit'
-          disabled={!isValid}>
-          Зарегистрироваться
-        </button>
-      </form>
-      <Link
-        to='/signin'
-        className='auth__link'>
-        Уже зарегистрированы? Войти
-      </Link>
+      </AuthPage>
     </section>
   );
 }

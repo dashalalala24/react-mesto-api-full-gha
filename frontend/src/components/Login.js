@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import AuthPage from './AuthPage';
 import useFormAndValidation from '../hooks/useFormAndValidation';
 
 function Login({ handleLogin }) {
@@ -42,11 +43,12 @@ function Login({ handleLogin }) {
 
   return (
     <section className='auth'>
-      <h3 className='auth__title'>Вход</h3>
-      <form
-        className='auth__form'
-        name='auth'
-        onSubmit={handleSubmit}>
+      <AuthPage
+        formName='login'
+        onSubmit={handleSubmit}
+        title='Вход'
+        buttonText='Войти'
+        isValid={isValid}>
         <div className='auth__inputs'>
           <input
             className='auth__input auth__input_type_email'
@@ -81,14 +83,7 @@ function Login({ handleLogin }) {
             {errors.password}
           </span>
         </div>
-        <button
-          className={`auth__button ${!isValid ? 'auth__button_disabled' : ''}`}
-          type='submit'
-          disabled={!isValid}>
-          Войти
-        </button>
-      </form>
-      <p className='auth__link'></p>
+      </AuthPage>
     </section>
   );
 }
