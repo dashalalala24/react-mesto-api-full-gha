@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "es2021": true
   },
@@ -8,6 +9,9 @@
     "ecmaVersion": "latest"
   },
   "rules": {
+    "no-console": [
+      0, "log", "error"
+    ],
     "no-underscore-dangle": [
       "error",
       {

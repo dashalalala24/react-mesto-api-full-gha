@@ -10,7 +10,7 @@ function EditAvatarPopup({ isOpen, onClose, onOverlayClick, onUpdateAvatar, onLo
   useEffect(() => {
     resetForm();
     profilePicRef.current.value = null;
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();

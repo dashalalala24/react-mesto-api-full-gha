@@ -13,7 +13,7 @@ function EditProfilePopup({ isOpen, onClose, onOverlayClick, onUpdateUser, onLoa
     resetForm();
     setValues(currentUser);
     setIsValid(true);
-  }, [currentUser, isOpen]);
+  }, [currentUser, isOpen, resetForm, setIsValid, setValues]);
 
   function handleSubmit(e) {
     e.preventDefault();

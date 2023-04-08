@@ -24,7 +24,7 @@ function Login({ handleLogin }) {
 
   useEffect(() => {
     setIsValid(false);
-  }, []);
+  }, [setIsValid]);
 
   // const [userData, setUserData] = useState({
   //   email: '',

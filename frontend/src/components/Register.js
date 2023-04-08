@@ -13,7 +13,7 @@ function Register({ handleRegister }) {
 
   useEffect(() => {
     setIsValid(false);
-  }, []);
+  }, [setIsValid]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
